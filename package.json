@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "jest --passWithNoTests",
+    "watchall": "jest --watchAll",
+    "coverage": "jest --coverage"
   },
   "dependencies": {
     "next": "12.1.0",
