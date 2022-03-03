@@ -1,8 +1,13 @@
 const calculateTime = (date) => {
   let timePassed;
 
+  if (new Date(date) > Date.now()) {
+    return "this tuit is from the future";
+  }
+
   const milliseconds = Math.abs(new Date(date) - Date.now());
-  const minutes = Math.round(((milliseconds % 86400000) % 3600000) / 60000);
+
+  const minutes = Math.floor(milliseconds / 1000 / 60);
   const hours = Math.floor((milliseconds % 86400000) / 3600000);
   const days = Math.floor(milliseconds / 86400000);
 
@@ -14,7 +19,7 @@ const calculateTime = (date) => {
     timePassed = `${days} days`;
   }
 
-  return timePassed;
+  return `this was posted ${timePassed} ago`;
 };
 
 export default calculateTime;
