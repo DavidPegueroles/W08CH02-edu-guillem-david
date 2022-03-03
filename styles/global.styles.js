@@ -98,6 +98,19 @@ const Main = styled.main`
             color: pink;
           }
         }
+
+        .delete {
+          border: none;
+          color: red;
+
+          position: absolute;
+          left: 3vw;
+          margin-bottom: 60px;
+        }
+
+        .deleted {
+          display: none;
+        }
       }
     }
   }
