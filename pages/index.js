@@ -1,4 +1,4 @@
-import NewTuit from "../components/NewTuit";
+import NewTuit from "../components/NewTwit/NewTuit";
 import TuitComponent from "../components/TuitComponent/TuitComponent";
 import Main from "../styles/global.styles";
 

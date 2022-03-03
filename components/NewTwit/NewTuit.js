@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Div from "./NewTuit.styles";
 
 const NewTuit = () => {
   const [buttonDisabled, setButtonDisabled] = useState(true);
@@ -31,7 +32,7 @@ const NewTuit = () => {
 
   return (
     <>
-      <div className="create-form">
+      <Div className="create-form">
         <h2>Create a new Tuit</h2>
         <form onSubmit={onSubmit} autoComplete="off" noValidate>
           <textarea
@@ -51,7 +52,7 @@ const NewTuit = () => {
             Create
           </button>
         </form>
-      </div>
+      </Div>
     </>
   );
 };
