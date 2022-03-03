@@ -17,7 +17,10 @@ const TuitComponent = ({ tuit }) => {
 
   const [isFaved, setIsFaved] = useState(false);
 
-  const fav = () => {
+  const favATuit = async (id) => {
+    await fetch(`${process.env.NEXT_PUBLIC_API}like/${id}`, {
+      method: "PATCH",
+    });
     setIsFaved(true);
   };
 
@@ -41,7 +44,7 @@ const TuitComponent = ({ tuit }) => {
               onClick={
                 !isFaved
                   ? () => {
-                      fav();
+                      favATuit(tuit.id);
                     }
                   : () => {
                       doNothing();
