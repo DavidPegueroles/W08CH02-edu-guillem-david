@@ -1,15 +1,22 @@
 import { render, screen } from "@testing-library/react";
+import Link from "next/Link";
 import Layout from "../../components/Layout";
 
 describe("Given a Layout component", () => {
   describe("When displayed", () => {
-    test("It shoul render a footer with a text `Coded by Pegueroles and Guillem`", () => {
-      render(<Layout></Layout>);
-      const expectedText = "Coded by Pegueroles and Guillem";
+    test("It should render the text `Home` with a link", () => {
+      render(
+        <Layout>
+          <Link href="/">
+            <a>Home</a>
+          </Link>
+        </Layout>
+      );
+      const expectedText = "Home";
 
-      const foot = screen.getByText(/Coded by Pegueroles and Guillem/i);
+      const renderization = screen.getByRole("link", { name: "Home" });
 
-      expect(foot).toBe(expectedText);
+      expect(renderization).toHaveTextContent(expectedText);
     });
   });
 });
