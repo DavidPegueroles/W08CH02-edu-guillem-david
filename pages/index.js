@@ -1,4 +1,5 @@
 import router from "next/router";
+import NewTuit from "../components/NewTuit";
 import Main from "../styles/global.styles";
 import calculateTime from "../utils/calculateTime";
 
@@ -13,7 +14,7 @@ const Home = ({ tuits }) => {
         <header>
           <h1>Tuitah</h1>
         </header>
-
+        <NewTuit />
         <section>
           <ul className="feed">
             {tuits &&
