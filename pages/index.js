@@ -20,6 +20,7 @@ const Home = ({ tuits }) => {
               tuits.map((tuit) => (
                 <li
                   key={tuit.id}
+                  title="tuit"
                   className="tuit"
                   onClick={() => {
                     goToDetailsPage(tuit.id);
@@ -31,9 +32,7 @@ const Home = ({ tuits }) => {
                       <li className="favourite">
                         <span>♡</span> {tuit.likes}
                       </li>
-                      <li>{`this was posted ${calculateTime(
-                        tuit.date
-                      )} ago`}</li>
+                      <li>{calculateTime(tuit.date)}</li>
                     </div>
                   </ul>
 
