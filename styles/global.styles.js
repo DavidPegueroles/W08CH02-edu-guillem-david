@@ -70,6 +70,11 @@ const Main = styled.main`
                 color: pink;
                 font-size: 25px;
                 margin-right: 5px;
+                cursor: pointer;
+              }
+
+              .liked {
+                cursor: default;
               }
             }
           }
