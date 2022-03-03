@@ -10,7 +10,9 @@ const Layout = ({ children }) => {
       </Head>
 
       {children}
-      <footer></footer>
+      <footer>
+        <p>Coded by Pegueroles and Guillem</p>
+      </footer>
     </>
   );
 };
