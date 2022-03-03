@@ -1,10 +1,18 @@
 import router from "next/router";
+import NewTuit from "../components/NewTuit";
 import Main from "../styles/global.styles";
 import calculateTime from "../utils/calculateTime";
+import { useState } from "react";
 
 const Home = ({ tuits }) => {
   const goToDetailsPage = (id) => {
     router.push(`/${id}`);
+  };
+
+  const deleteTuit = async (id) => {
+    await axios.delete(
+      `https://tuitah-guillem-david.herokuapp.com/delete${id}`
+    );
   };
 
   return (
@@ -13,10 +21,11 @@ const Home = ({ tuits }) => {
         <header>
           <h1>Tuitah</h1>
         </header>
-
+        <NewTuit />
         <section>
           <ul className="feed">
             {tuits &&
+
               tuits
                 .sort((a, b) => new Date(a.date) - new Date(b.date))
                 .map((tuit) => (
@@ -35,8 +44,13 @@ const Home = ({ tuits }) => {
                           <span>♡</span> {tuit.likes}
                         </li>
                         <li>{calculateTime(tuit.date)}</li>
+                         <button onClick={() => deleteTuit(tuit.id)}>
+                        DELETE
+                      </button>
                       </div>
+                             
                     </ul>
+
 
                     <div className="separator"></div>
                   </li>
