@@ -2,19 +2,17 @@ import router from "next/router";
 import NewTuit from "../components/NewTuit";
 import Main from "../styles/global.styles";
 import calculateTime from "../utils/calculateTime";
+import { useState } from "react";
 
 const Home = ({ tuits }) => {
   const goToDetailsPage = (id) => {
     router.push(`/${id}`);
   };
 
-  const [tuitList, setTuitList] = useState([...tuits]);
-
   const deleteTuit = async (id) => {
     await axios.delete(
       `https://tuitah-guillem-david.herokuapp.com/delete${id}`
     );
-    setTuitList(tuitList.filter((tuit) => tuit.id !== id));
   };
 
   return (
