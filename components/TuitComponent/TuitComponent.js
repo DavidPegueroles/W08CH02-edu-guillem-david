@@ -8,8 +8,11 @@ const TuitComponent = ({ tuit }) => {
     router.push(`/${id}`);
   };
 
+  const [isDeleted, setIsDeleted] = useState(false);
+
   const deleteTuit = async (id) => {
     await axios.delete(`${process.env.NEXT_PUBLIC_API}delete/${id}`);
+    setIsDeleted(true);
   };
 
   const [isFaved, setIsFaved] = useState(false);
@@ -52,11 +55,18 @@ const TuitComponent = ({ tuit }) => {
           <li>{calculateTime(tuit.date)}</li>
 
           <button
-            onClick={() => {
-              deleteTuit(tuit.id);
-            }}
+            className={isDeleted ? "delete deleted" : "delete"}
+            onClick={
+              !isDeleted
+                ? () => {
+                    deleteTuit(tuit.id);
+                  }
+                : () => {
+                    doNothing();
+                  }
+            }
           >
-            DELETE
+            ✘
           </button>
         </div>
       </ul>
