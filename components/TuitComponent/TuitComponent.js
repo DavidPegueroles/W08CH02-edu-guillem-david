@@ -1,6 +1,7 @@
 import router from "next/router";
 import axios from "axios";
 import calculateTime from "../../utils/calculateTime";
+import { useState } from "react";
 
 const TuitComponent = ({ tuit }) => {
   const goToDetailsPage = (id) => {
@@ -10,6 +11,14 @@ const TuitComponent = ({ tuit }) => {
   const deleteTuit = async (id) => {
     await axios.delete(`${process.env.NEXT_PUBLIC_API}delete/${id}`);
   };
+
+  const [isFaved, setIsFaved] = useState(false);
+
+  const fav = () => {
+    setIsFaved(true);
+  };
+
+  const doNothing = () => {};
 
   return (
     <li key={tuit.id} title="tuit" className="tuit">
@@ -24,7 +33,21 @@ const TuitComponent = ({ tuit }) => {
         </li>
         <div className="stats">
           <li className="favourite">
-            <span>♡</span> {tuit.likes}
+            <span
+              className={isFaved ? "liked" : ""}
+              onClick={
+                !isFaved
+                  ? () => {
+                      fav();
+                    }
+                  : () => {
+                      doNothing();
+                    }
+              }
+            >
+              {!isFaved ? "♡" : "♥"}
+            </span>{" "}
+            {tuit.likes}
           </li>
           <li>{calculateTime(tuit.date)}</li>
 
