@@ -70,7 +70,7 @@ export const getStaticProps = async ({ params }) => {
 
   return {
     props: {
-      tuit,
+      tuit: tuit.tuit,
     },
     revalidate: 20,
   };

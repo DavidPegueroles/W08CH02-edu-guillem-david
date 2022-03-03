@@ -25,32 +25,36 @@ const Home = ({ tuits }) => {
         <section>
           <ul className="feed">
             {tuits &&
-              tuits.map((tuit) => (
-                <li
-                  key={tuit.id}
-                  className="tuit"
-                  onClick={() => {
-                    goToDetailsPage(tuit.id);
-                  }}
-                >
-                  <ul className="tuit-body">
-                    <li className="tuit-text">{tuit.text}</li>
-                    <div className="stats">
-                      <li className="favourite">
-                        <span>♡</span> {tuit.likes}
-                      </li>
-                      <li>{`this was posted ${calculateTime(
-                        tuit.date
-                      )} ago`}</li>
-                      <button onClick={() => deleteTuit(tuit.id)}>
+
+              tuits
+                .sort((a, b) => new Date(a.date) - new Date(b.date))
+                .map((tuit) => (
+                  <li
+                    key={tuit.id}
+                    title="tuit"
+                    className="tuit"
+                    onClick={() => {
+                      goToDetailsPage(tuit.id);
+                    }}
+                  >
+                    <ul className="tuit-body">
+                      <li className="tuit-text">{tuit.text}</li>
+                      <div className="stats">
+                        <li className="favourite">
+                          <span>♡</span> {tuit.likes}
+                        </li>
+                        <li>{calculateTime(tuit.date)}</li>
+                         <button onClick={() => deleteTuit(tuit.id)}>
                         DELETE
                       </button>
-                    </div>
-                  </ul>
+                      </div>
+                             
+                    </ul>
 
-                  <div className="separator"></div>
-                </li>
-              ))}
+
+                    <div className="separator"></div>
+                  </li>
+                ))}
           </ul>
         </section>
       </Main>
