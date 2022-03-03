@@ -8,6 +8,15 @@ const Home = ({ tuits }) => {
     router.push(`/${id}`);
   };
 
+  const [tuitList, setTuitList] = useState([...tuits]);
+
+  const deleteTuit = async (id) => {
+    await axios.delete(
+      `https://tuitah-guillem-david.herokuapp.com/delete${id}`
+    );
+    setTuitList(tuitList.filter((tuit) => tuit.id !== id));
+  };
+
   return (
     <>
       <Main>
@@ -35,6 +44,9 @@ const Home = ({ tuits }) => {
                       <li>{`this was posted ${calculateTime(
                         tuit.date
                       )} ago`}</li>
+                      <button onClick={() => deleteTuit(tuit.id)}>
+                        DELETE
+                      </button>
                     </div>
                   </ul>
 
