@@ -91,8 +91,13 @@ const Main = styled.main`
         button {
           background-color: transparent;
           color: white;
+          border: 2px solid pink;
+          border-radius: 10px;
           font-size: 40px;
           font-family: "Hubballi", cursive;
+          margin-left: 20px;
+          padding: 5px 20px;
+          cursor: pointer;
 
           &:active {
             color: pink;
@@ -101,7 +106,7 @@ const Main = styled.main`
 
         .delete {
           border: none;
-          color: red;
+          color: #bf2e5a;
 
           position: absolute;
           left: 3vw;
