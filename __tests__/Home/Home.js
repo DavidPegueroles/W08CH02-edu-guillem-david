@@ -1,6 +1,8 @@
 import "whatwg-fetch";
 import { render, screen } from "@testing-library/react";
-import Home from "../../pages";
+import { server } from "../../mocks/server";
+import Home, { getServerSideProps } from "../../pages";
+import tuits from "../../mocks/tuits";
 
 describe("Given a Home page component", () => {
   describe("When it's rendered", () => {
@@ -38,6 +40,27 @@ describe("Given a Home page component", () => {
 
       expect(tuitText1).toBeInTheDocument();
       expect(tuitText2).toBeInTheDocument();
+    });
+  });
+});
+
+describe("Given a getServerSideProps function", () => {
+  describe("When it's invoked", () => {
+    test("Then it should return an object with property props with a list of tuits", async () => {
+      server.listen();
+      server.resetHandlers();
+
+      const response = {
+        props: {
+          tuits: tuits,
+        },
+      };
+
+      const props = await getServerSideProps();
+
+      expect(props).toEqual(response);
+
+      server.close();
     });
   });
 });
