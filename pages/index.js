@@ -2,10 +2,17 @@ import router from "next/router";
 import NewTuit from "../components/NewTuit";
 import Main from "../styles/global.styles";
 import calculateTime from "../utils/calculateTime";
+import { useState } from "react";
 
 const Home = ({ tuits }) => {
   const goToDetailsPage = (id) => {
     router.push(`/${id}`);
+  };
+
+  const deleteTuit = async (id) => {
+    await axios.delete(
+      `https://tuitah-guillem-david.herokuapp.com/delete${id}`
+    );
   };
 
   return (
@@ -35,6 +42,9 @@ const Home = ({ tuits }) => {
                       <li>{`this was posted ${calculateTime(
                         tuit.date
                       )} ago`}</li>
+                      <button onClick={() => deleteTuit(tuit.id)}>
+                        DELETE
+                      </button>
                     </div>
                   </ul>
 
