@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import Link from "next/link";
-import Layout from "../../components/Layout";
+import Layout from "../../components/layout/Layout";
 
 describe("Given a Layout component", () => {
   describe("When displayed", () => {
