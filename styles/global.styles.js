@@ -22,6 +22,8 @@ const Main = styled.main`
     justify-content: center;
     align-items: center;
     .feed {
+      display: flex;
+      flex-direction: column-reverse;
       list-style: none;
 
       padding: 0;
