@@ -109,7 +109,7 @@ const Main = styled.main`
           color: #bf2e5a;
 
           position: absolute;
-          left: 3vw;
+          left: 1vw;
           margin-bottom: 60px;
         }
 

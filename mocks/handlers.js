@@ -2,7 +2,7 @@
 import { rest } from "msw";
 
 export const handlers = [
-  rest.get(process.env.NEXT_PUBLIC_API, (req, res, ctx) =>
+  rest.get(`${process.env.NEXT_PUBLIC_API}list`, (req, res, ctx) =>
     res(
       ctx.status(200),
       ctx.json({
