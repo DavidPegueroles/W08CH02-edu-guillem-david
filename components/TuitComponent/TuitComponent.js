@@ -1,9 +1,15 @@
-import router from "next/router";
 import axios from "axios";
 import calculateTime from "../../utils/calculateTime";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
-const TuitComponent = ({ tuit }) => {
+const TuitComponent = ({ tuit, detailsPage }) => {
+  const router = useRouter();
+
+  const goToListPage = () => {
+    router.push("/");
+  };
+
   const goToDetailsPage = (id) => {
     router.push(`/${id}`);
   };
@@ -72,6 +78,16 @@ const TuitComponent = ({ tuit }) => {
       </ul>
 
       <div className="separator"></div>
+
+      {detailsPage && (
+        <button
+          onClick={() => {
+            goToListPage();
+          }}
+        >
+          Back
+        </button>
+      )}
     </li>
   );
 };
