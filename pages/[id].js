@@ -29,7 +29,7 @@ const Tuit = ({ tuit }) => {
                     <li className="favourite">
                       <span>♡</span> {tuit.likes}
                     </li>
-                    <li>{`this was posted ${calculateTime(tuit.date)} ago`}</li>
+                    <li>{calculateTime(tuit.date)}</li>
                   </div>
                 </ul>
 
@@ -72,7 +72,6 @@ export const getStaticProps = async ({ params }) => {
     props: {
       tuit: tuit.tuit,
     },
-    revalidate: 20,
   };
 };
 
